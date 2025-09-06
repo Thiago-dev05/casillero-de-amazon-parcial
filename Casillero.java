@@ -31,5 +31,17 @@ public class Casillero {
     public void setDisponible(Boolean disponible) {
         this.disponible = disponible;
     }
+     public void setPaquete(Paquete paquete) {
+        this.paquete = paquete;
+    }
+
+    public void asignarPaquete(Paquete paquete) {
+        if(this.disponible) {
+            this.paquete = paquete;
+            this.disponible = false;
+        } else {
+            System.out.println("Este casillero " + id + " ya está ocupado.");
+        }
+    }
 
 }   
