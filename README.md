@@ -1,2 +1,2 @@
 Parcial
-ok
+Prueba 1
