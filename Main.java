@@ -1,74 +1,46 @@
 import java.util.Scanner;
-import java.util.ArrayList;
 
 public class Main {
-    // Lista para simular la gestión de casilleros
-    static ArrayList<String> casilleros = new ArrayList<>();
-
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int opcion;
+        GestionCasilleros gestion = new GestionCasilleros(3, 3); // Crear una gestión de casilleros 3x3
 
-        do {
-            System.out.println("=== Menú Principal ===");
-            System.out.println("1. Registrar");
-            System.out.println("2. Consultar");
-            System.out.println("3. Mostrar info");
+        while (true) {
+            System.out.println("1. Mostrar casilleros disponibles");
+            System.out.println("2. Asignar paquete a casillero");
+            System.out.println("3. Consultar paquete en casillero");
             System.out.println("4. Salir");
             System.out.print("Seleccione una opción: ");
-            opcion = scanner.nextInt();
-            scanner.nextLine(); // Limpiar buffer
+            int opcion = scanner.nextInt();
+            scanner.nextLine(); // Consumir el salto de línea
 
             switch (opcion) {
                 case 1:
-                    registrarCasillero(scanner);
+                    gestion.mostrarDisponibles();
                     break;
                 case 2:
-                    consultarCasillero(scanner);
+                    System.out.print("Ingrese ID del casillero (ej. C-00): ");
+                    String idCasillero = scanner.nextLine();
+                    System.out.print("Ingrese ID del paquete: ");
+                    String idPaquete = scanner.nextLine();
+                    System.out.print("Ingrese descripción del paquete: ");
+                    String descripcion = scanner.nextLine();
+                    Paquete paquete = new Paquete(idPaquete, opcion, descripcion);
+                    gestion.asignarPaquete(paquete, idCasillero);
                     break;
                 case 3:
-                    mostrarInfoCasilleros();
+                    System.out.print("Ingrese ID del casillero a consultar: ");
+                    String idConsulta = scanner.nextLine();
+                    gestion.consultarPaquete(idConsulta);
                     break;
                 case 4:
-                    System.out.println("Saliendo del programa...");
-                    break;
+                    System.out.println("Saliendo...");
+                    scanner.close();
+                    return;
                 default:
-                    System.out.println("Opción no válida. Intente de nuevo.");
-            }
-            System.out.println();
-        } while (opcion != 4);
-
-        scanner.close();
-    }
-
-    // Método para registrar un casillero
-    public static void registrarCasillero(Scanner scanner) {
-        System.out.print("Ingrese el nombre del casillero a registrar: ");
-        String nombre = scanner.nextLine();
-        casilleros.add(nombre);
-        System.out.println("Casillero '" + nombre + "' registrado exitosamente.");
-    }
-
-    // Método para consultar un casillero
-    public static void consultarCasillero(Scanner scanner) {
-        System.out.print("Ingrese el nombre del casillero a consultar: ");
-        String nombre = scanner.nextLine();
-        if (casilleros.contains(nombre)) {
-            System.out.println("El casillero '" + nombre + "' está registrado.");
-        } else {
-            System.out.println("El casillero '" + nombre + "' NO está registrado.");
-        }
-    }
-
-    // Método para mostrar información de todos los casilleros
-    public static void mostrarInfoCasilleros() {
-        System.out.println("=== Lista de Casilleros Registrados ===");
-        if (casilleros.isEmpty()) {
-            System.out.println("No hay casilleros registrados.");
-        } else {
-            for (String nombre : casilleros) {
-                System.out.println("- " + nombre);
+                    System.out.println("Opción no válida.");
             }
         }
+        
     }
 }
