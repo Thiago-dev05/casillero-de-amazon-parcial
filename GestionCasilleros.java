@@ -19,12 +19,24 @@ public class GestionCasilleros {
   public int getTotalCasilleros() {
     return filas * cols;
   }
+  // Mirar si está disponible un casillero
+  public boolean estaDisponible(String idCasillero) {
+    for (int i = 0; i < filas; i++) {
+        for (int j = 0; j < cols; j++) {
+            if (casilleros[i][j].getId().equals(idCasillero)) {
+                return casilleros[i][j].getDisponible();
+            }
+        }
+    }
+    System.out.println("Casillero " + idCasillero + " no encontrado.");
+    return false;
+}
 
   // Asignar paquete a un casillero disponible
   public boolean asignarPaquete(Paquete p, String idCasillero) {
     for (int i = 0; i < filas; i++) {
       for (int j = 0; j < cols; j++)
-        if (casilleros[i][j].getId().equals(idCasillero) && casilleros[i][j].getDisponible()) {
+        if (casilleros[i][j].getId().equals(idCasillero)) {
           casilleros[i][j].asignarPaquete(p);
           p.setIdCasillero(casilleros[i][j].getId());
           System.out.println("Paquete asignado al casillero: " + casilleros[i][j].getId());
@@ -32,7 +44,6 @@ public class GestionCasilleros {
         }
       
     }
-    System.out.println("No hay casilleros disponibles");
     return false;
   }
 

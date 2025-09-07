@@ -10,7 +10,7 @@ public class Main {
             System.out.println("2. Asignar paquete a casillero");
             System.out.println("3. Consultar paquete en casillero");
             System.out.println("4. Vaciar casillero");
-            System.out.println("5. Salir");
+            System.out.println("5. Salir\n");
             System.out.print("Seleccione una opción: ");
             int opcion = scanner.nextInt();
             scanner.nextLine(); // Consumir el salto de línea
@@ -22,6 +22,11 @@ public class Main {
                 case 2:
                     System.out.print("Ingrese ID del casillero (ej. C-00): ");
                     String idCasillero = scanner.nextLine();
+                    if (!gestion.estaDisponible(idCasillero)) {
+                        System.out.println("El casillero " + idCasillero + " no está disponible.\n");
+                        break;
+                    }
+
                     System.out.print("Ingrese el nombre del Destinatario: ");
                     String destinatario = scanner.nextLine();
                     System.out.print("Ingrese descripción del paquete: ");
