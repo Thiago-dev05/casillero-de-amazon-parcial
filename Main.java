@@ -1,10 +1,10 @@
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         GestionCasilleros gestion = new GestionCasilleros(3, 3); // Crear una gestión de casilleros 3x3
-
         while (true) {
             System.out.println("1. Mostrar casilleros disponibles");
             System.out.println("2. Asignar paquete a casillero");
@@ -25,6 +25,9 @@ public class Main {
                     String idPaquete = scanner.nextLine();
                     System.out.print("Ingrese descripción del paquete: ");
                     String descripcion = scanner.nextLine();
+                    System.out.print("Ingrese la fecha de ingreso del paquete (formato: YYYY-MM-DD): ");
+                    String fechaStr = scanner.nextLine();
+                    LocalDate fechaIngreso = LocalDate.parse(fechaStr);
                     Paquete paquete = new Paquete(idPaquete, opcion, descripcion);
                     gestion.asignarPaquete(paquete, idCasillero);
                     break;

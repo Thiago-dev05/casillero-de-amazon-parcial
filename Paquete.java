@@ -1,10 +1,13 @@
+
+import java.time.LocalDate;
+
 class Paquete{
 
     private String destinatario;
-    private int fechaIngreso;
+    private LocalDate fechaIngreso;
     private String idCasillero; 
 
-    public Paquete(String destinatario, int fechaIngreso, String idCasillero) {
+    public Paquete(String destinatario, LocalDate fechaIngreso, String idCasillero) {
         this.destinatario = destinatario;
         this.fechaIngreso = fechaIngreso;
         this.idCasillero = idCasillero;
@@ -15,7 +18,7 @@ class Paquete{
         return destinatario;
     }
 
-    public int getFechaIngreso() {
+    public LocalDate getFechaIngreso() {
         return fechaIngreso;
     }
 
@@ -24,7 +27,7 @@ class Paquete{
     }
 
     // Setters
-    public void setFechaIngreso(int fechaIngreso) {
+    public void setFechaIngreso(LocalDate fechaIngreso) {
         this.fechaIngreso = fechaIngreso;
     }
 
@@ -36,7 +39,4 @@ class Paquete{
         this.idCasillero = idCasillero;
     }
 
-    public void mostrarFechaIngreso(int dia, int mes, int ano) {
-        System.out.println("Fecha de ingreso: " + dia + "/" + mes + "/" + ano);
-    }
 }
