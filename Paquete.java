@@ -36,4 +36,7 @@ class Paquete{
         this.idCasillero = idCasillero;
     }
 
+    public void mostrarFechaIngreso(int dia, int mes, int ano) {
+        System.out.println("Fecha de ingreso: " + dia + "/" + mes + "/" + ano);
+    }
 }
