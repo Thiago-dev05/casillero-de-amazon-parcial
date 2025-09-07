@@ -6,11 +6,13 @@ class Paquete{
     private String destinatario;
     private LocalDate fechaIngreso;
     private String idCasillero; 
+    private String descripcion;
 
-    public Paquete(String destinatario, LocalDate fechaIngreso, String idCasillero) {
+    public Paquete(String destinatario, LocalDate fechaIngreso, String idCasillero, String descripcion) {
         this.destinatario = destinatario;
         this.fechaIngreso = fechaIngreso;
         this.idCasillero = idCasillero;
+        this.descripcion = descripcion;
     }
 
     // Getters
@@ -25,7 +27,9 @@ class Paquete{
     public String getIdCasillero() {
         return idCasillero;
     }
-
+    public String getDescripcion(){
+        return descripcion;
+    }
     // Setters
     public void setFechaIngreso(LocalDate fechaIngreso) {
         this.fechaIngreso = fechaIngreso;
@@ -39,4 +43,7 @@ class Paquete{
         this.idCasillero = idCasillero;
     }
 
+    public void setDescripcion(String descripcion){
+        this.descripcion = descripcion;
+    }
 }

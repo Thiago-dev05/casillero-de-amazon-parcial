@@ -64,6 +64,7 @@ public class GestionCasilleros {
             Paquete p = casilleros[i][j].getPaquete();
             System.out.println("Destinatario: " + p.getDestinatario());
             System.out.println("Fecha de ingreso: " + p.getFechaIngreso());
+            System.out.println("Descripción: " + p.getDescripcion());
             return true;
           } else {
             System.out.println("El casillero " + idCasillero + " está vacío.");
